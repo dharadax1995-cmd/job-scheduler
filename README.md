@@ -25,7 +25,3 @@ node server.js
 ```
 
 Open http://localhost:3000 in a browser.
-
-## PriorityJob Activity
-
-The priority-job feature will extend the scheduler by allowing jobs to be executed according to their assigned priority.
