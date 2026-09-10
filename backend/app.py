@@ -7,7 +7,7 @@ Build a few jobs, register them, run them, print a summary.
 """
 
 
-from models import EmailJob, DataProcessingJob, PriorityJob
+from job_factory import JobFactory
 
 from task_manager import TaskManager
 
@@ -16,13 +16,44 @@ from executor import Executor
 
 def build_jobs():
     return [
-        EmailJob(1, "user@example.com"),
-        DataProcessingJob(2, "dataset_A"),
-        EmailJob(3, "admin@example.com"),
-        DataProcessingJob(4, "dataset_B"),
-        PriorityJob(5, "critical_dataset", 1),
-        PriorityJob(6, "standard_dataset", 3),
-        PriorityJob(7, "important_dataset", 2),
+        JobFactory.create_job(
+            "email",
+            1,
+            recipient="user@example.com"
+        ),
+        JobFactory.create_job(
+            "data",
+            2,
+            dataset="dataset_A"
+        ),
+        JobFactory.create_job(
+            "email",
+            3,
+            recipient="admin@example.com"
+        ),
+        JobFactory.create_job(
+            "data",
+            4,
+            dataset="dataset_B"
+        ),
+        JobFactory.create_job(
+            "priority",
+            5,
+            dataset="critical_dataset",
+            priority=1
+        ),
+        JobFactory.create_job(
+            "priority",
+            6,
+            dataset="standard_dataset",
+            priority=3
+        ),
+        JobFactory.create_job(
+            "priority",
+            7,
+            dataset="important_dataset",
+            priority=2
+        ),
     ]
 
 
