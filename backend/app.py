@@ -52,3 +52,11 @@ if __name__ == "__main__":
 
     # FIX (app.py): added 'failed' count to summary so failures are visible.
     print(f"Failed:    {len(manager.get_jobs_by_status('failed'))}")
+
+    print("\n=== JOB LOGS ===")
+
+for job in jobs:
+    print(f"\nJob {job.job_id} logs:")
+
+    for log in job.get_logs():
+        print(f"- {log}")
