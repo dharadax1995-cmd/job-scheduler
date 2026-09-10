@@ -25,3 +25,7 @@ node server.js
 ```
 
 Open http://localhost:3000 in a browser.
+
+## PriorityJob Activity
+
+The PriorityJob feature will allow jobs to be executed according to their assigned priority.
