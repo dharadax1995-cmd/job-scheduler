@@ -7,7 +7,7 @@ Build a few jobs, register them, run them, print a summary.
 """
 
 
-from models import EmailJob, DataProcessingJob
+from models import EmailJob, DataProcessingJob, PriorityJob
 
 from task_manager import TaskManager
 
@@ -15,23 +15,21 @@ from executor import Executor
 
 
 def build_jobs():
-
     return [
-
         EmailJob(1, "user@example.com"),
-
         DataProcessingJob(2, "dataset_A"),
-
         EmailJob(3, "admin@example.com"),
-
         DataProcessingJob(4, "dataset_B"),
-
+        PriorityJob(5, "critical_dataset", 1),
+        PriorityJob(6, "standard_dataset", 3),
+        PriorityJob(7, "important_dataset", 2),
     ]
 
 
 if __name__ == "__main__":
 
     jobs = build_jobs()
+    jobs.sort(key=lambda job: getattr(job, "priority", 999))
 
 
     manager = TaskManager()
